@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="25bc71ab361b40a49a060384bd52b280" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.AMBIENTE" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DOMINIO" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ESQUEMABANCO" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FUNCAO" Width="1.5" PointX="9.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GRUPO" Width="1.5" PointX="12" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.INSTANCIABANCO" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.INSTANCIAESQUEMABANCO" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LOGERRO" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LOGPRIVILEGIO" Width="1.5" PointX="16.5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MENSAGEM" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SISTEMA" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SISTEMAAMBIENTE" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.USUARIO" Width="1.5" PointX="14.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.USUARIOACESSO" Width="1.5" PointX="19.5" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="Model.FKINSTANCIABANCOAMBIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FKSISTEMAAMBIENTEAMBIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FKINSTANCIAESQUBANESQUEMABANC" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FKFUNCAOSISTEMA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FKGRUPOSISTEMA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FKINSTANCIAESQUBANCOINSTANCBAC" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FKLOGERROSISTEMA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FKLOGPRIVILEGIOUSUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FKSISTEMAAMBIENTESISTEMA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FKUSUARIOACESSOSISTEMA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FKUSUARIOACESSOUSUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.GRUPOFUNCAO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SISTEMADOMINIO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SISTEMAESQUEMABANCO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.USUARIOGRUPO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

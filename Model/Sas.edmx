@@ -1,0 +1,1129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AMBIENTE">
+          <Key>
+            <PropertyRef Name="SQAMBIENTE" />
+          </Key>
+          <Property Name="SQAMBIENTE" Type="number" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="CDAMBIENTE" Type="varchar2" MaxLength="10" Nullable="false" />
+          <Property Name="DSAMBIENTE" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DOMINIO">
+          <Key>
+            <PropertyRef Name="SQDOMINIO" />
+          </Key>
+          <Property Name="SQDOMINIO" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="CDDOMINIO" Type="varchar2" MaxLength="10" Nullable="false" />
+          <Property Name="NMDOMINIO" Type="varchar2" MaxLength="200" Nullable="false" />
+          <Property Name="NUDIASEXPIRACAOSENHA" Type="number" Precision="5" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ESQUEMABANCO">
+          <Key>
+            <PropertyRef Name="SQESQUEMABANCO" />
+          </Key>
+          <Property Name="SQESQUEMABANCO" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="CDESQUEMABANCO" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="DSESQUEMABANCO" Type="varchar2" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FUNCAO">
+          <Key>
+            <PropertyRef Name="SQFUNCAO" />
+          </Key>
+          <Property Name="SQFUNCAO" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="SQSISTEMA" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="CDFUNCAO" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="NMFUNCAO" Type="varchar2" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GRUPO">
+          <Key>
+            <PropertyRef Name="SQGRUPO" />
+          </Key>
+          <Property Name="SQGRUPO" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="SQSISTEMA" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="CDGRUPO" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="DSGRUPO" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="FLADMINISTRATIVO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="DSSENHABANCODADOS" Type="varchar2" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="GRUPOFUNCAO">
+          <Key>
+            <PropertyRef Name="SQFUNCAO" />
+            <PropertyRef Name="SQGRUPO" />
+          </Key>
+          <Property Name="SQFUNCAO" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="SQGRUPO" Type="number" Precision="5" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INSTANCIABANCO">
+          <Key>
+            <PropertyRef Name="SQINSTANCIABANCO" />
+          </Key>
+          <Property Name="SQINSTANCIABANCO" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="CDINSTANCIABANCO" Type="varchar2" MaxLength="10" Nullable="false" />
+          <Property Name="DSINSTANCIABANCO" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="SQAMBIENTE" Type="number" Precision="2" Scale="0" />
+          <Property Name="HOST" Type="varchar2" MaxLength="50" />
+          <Property Name="PORT" Type="varchar2" MaxLength="10" />
+          <Property Name="SERVICENAME" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="INSTANCIAESQUEMABANCO">
+          <Key>
+            <PropertyRef Name="SQESQUEMABANCO" />
+            <PropertyRef Name="SQINSTANCIABANCO" />
+          </Key>
+          <Property Name="SQESQUEMABANCO" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="SQINSTANCIABANCO" Type="number" Precision="4" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOGERRO">
+          <Key>
+            <PropertyRef Name="SQLOGERRO" />
+          </Key>
+          <Property Name="SQLOGERRO" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="SQSISTEMA" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="DSERRO" Type="varchar2" MaxLength="4000" Nullable="false" />
+          <Property Name="DTERRO" Type="date" Nullable="false" />
+          <Property Name="NUERRO" Type="varchar2" MaxLength="50" />
+          <Property Name="DSORIGEM" Type="varchar2" MaxLength="400" />
+          <Property Name="DSLOGIN" Type="varchar2" MaxLength="50" />
+          <Property Name="DCSTACKTRACE" Type="clob" />
+        </EntityType>
+        <EntityType Name="LOGPRIVILEGIO">
+          <Key>
+            <PropertyRef Name="SQLOGPRIVILEGIO" />
+          </Key>
+          <Property Name="SQLOGPRIVILEGIO" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="DTLOGPRIVILEGIO" Type="date" Nullable="false" />
+          <Property Name="TPACAO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="TPPRIVILEGIO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="NMOBJETO" Type="varchar2" MaxLength="40" Nullable="false" />
+          <Property Name="NMUSUARIO" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="SQUSUARIO" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="DSCOMANDO" Type="varchar2" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MENSAGEM">
+          <Key>
+            <PropertyRef Name="SQMENSAGEM" />
+          </Key>
+          <Property Name="SQMENSAGEM" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="CDMENSAGEM" Type="varchar2" MaxLength="10" Nullable="false" />
+          <Property Name="DSMENSAGEM" Type="varchar2" MaxLength="4000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SISTEMA">
+          <Key>
+            <PropertyRef Name="SQSISTEMA" />
+          </Key>
+          <Property Name="SQSISTEMA" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="CDSISTEMA" Type="varchar2" MaxLength="10" Nullable="false" />
+          <Property Name="NMSISTEMA" Type="varchar2" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SISTEMAAMBIENTE">
+          <Key>
+            <PropertyRef Name="SQAMBIENTE" />
+            <PropertyRef Name="SQSISTEMA" />
+          </Key>
+          <Property Name="SQAMBIENTE" Type="number" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="SQSISTEMA" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="DSURLSISTEMA" Type="varchar2" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SISTEMADOMINIO">
+          <Key>
+            <PropertyRef Name="SQDOMINIO" />
+            <PropertyRef Name="SQSISTEMA" />
+          </Key>
+          <Property Name="SQDOMINIO" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="SQSISTEMA" Type="number" Precision="4" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SISTEMAESQUEMABANCO">
+          <Key>
+            <PropertyRef Name="SQESQUEMABANCO" />
+            <PropertyRef Name="SQSISTEMA" />
+            <PropertyRef Name="SQINSTANCIABANCO" />
+          </Key>
+          <Property Name="SQESQUEMABANCO" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="SQSISTEMA" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="SQINSTANCIABANCO" Type="number" Precision="4" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="SQUSUARIO" />
+          </Key>
+          <Property Name="SQUSUARIO" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="CDMATRICULA" Type="varchar2" MaxLength="9" Nullable="false" />
+          <Property Name="NMUSUARIO" Type="varchar2" MaxLength="40" Nullable="false" />
+          <Property Name="DSLOGIN" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="DSHASHSENHA" Type="varchar2" MaxLength="80" Nullable="false" />
+          <Property Name="DTEXPIRACAOSENHA" Type="date" />
+          <Property Name="FLATIVO" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIOACESSO">
+          <Key>
+            <PropertyRef Name="SQUSUARIOACESSO" />
+          </Key>
+          <Property Name="SQUSUARIOACESSO" Type="number" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="DTACESSOSISTEMA" Type="date" Nullable="false" />
+          <Property Name="FLUSUARIOLOGADO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="SQUSUARIO" Type="number" Precision="4" Scale="0" />
+          <Property Name="SQSISTEMA" Type="number" Precision="4" Scale="0" />
+          <Property Name="DSLOGINREDE" Type="varchar2" MaxLength="50" />
+          <Property Name="DSMAQUINA" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="USUARIOGRUPO">
+          <Key>
+            <PropertyRef Name="SQUSUARIO" />
+            <PropertyRef Name="SQGRUPO" />
+          </Key>
+          <Property Name="SQUSUARIO" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="SQGRUPO" Type="number" Precision="5" Scale="0" Nullable="false" />
+        </EntityType>
+        <Association Name="FKFUNCAOSISTEMA">
+          <End Role="SISTEMA" Type="Self.SISTEMA" Multiplicity="1" />
+          <End Role="FUNCAO" Type="Self.FUNCAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SISTEMA">
+              <PropertyRef Name="SQSISTEMA" />
+            </Principal>
+            <Dependent Role="FUNCAO">
+              <PropertyRef Name="SQSISTEMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKGRUPOFUNCAOFUNCAO">
+          <End Role="FUNCAO" Type="Self.FUNCAO" Multiplicity="1" />
+          <End Role="GRUPOFUNCAO" Type="Self.GRUPOFUNCAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FUNCAO">
+              <PropertyRef Name="SQFUNCAO" />
+            </Principal>
+            <Dependent Role="GRUPOFUNCAO">
+              <PropertyRef Name="SQFUNCAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKGRUPOFUNCAOGRUPO">
+          <End Role="GRUPO" Type="Self.GRUPO" Multiplicity="1" />
+          <End Role="GRUPOFUNCAO" Type="Self.GRUPOFUNCAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRUPO">
+              <PropertyRef Name="SQGRUPO" />
+            </Principal>
+            <Dependent Role="GRUPOFUNCAO">
+              <PropertyRef Name="SQGRUPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKGRUPOSISTEMA">
+          <End Role="SISTEMA" Type="Self.SISTEMA" Multiplicity="1" />
+          <End Role="GRUPO" Type="Self.GRUPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SISTEMA">
+              <PropertyRef Name="SQSISTEMA" />
+            </Principal>
+            <Dependent Role="GRUPO">
+              <PropertyRef Name="SQSISTEMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKINSTANCIABANCOAMBIENTE">
+          <End Role="AMBIENTE" Type="Self.AMBIENTE" Multiplicity="0..1" />
+          <End Role="INSTANCIABANCO" Type="Self.INSTANCIABANCO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AMBIENTE">
+              <PropertyRef Name="SQAMBIENTE" />
+            </Principal>
+            <Dependent Role="INSTANCIABANCO">
+              <PropertyRef Name="SQAMBIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKINSTANCIAESQUBANCOINSTANCBAC">
+          <End Role="INSTANCIABANCO" Type="Self.INSTANCIABANCO" Multiplicity="1" />
+          <End Role="INSTANCIAESQUEMABANCO" Type="Self.INSTANCIAESQUEMABANCO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTANCIABANCO">
+              <PropertyRef Name="SQINSTANCIABANCO" />
+            </Principal>
+            <Dependent Role="INSTANCIAESQUEMABANCO">
+              <PropertyRef Name="SQINSTANCIABANCO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKINSTANCIAESQUBANESQUEMABANC">
+          <End Role="ESQUEMABANCO" Type="Self.ESQUEMABANCO" Multiplicity="1" />
+          <End Role="INSTANCIAESQUEMABANCO" Type="Self.INSTANCIAESQUEMABANCO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESQUEMABANCO">
+              <PropertyRef Name="SQESQUEMABANCO" />
+            </Principal>
+            <Dependent Role="INSTANCIAESQUEMABANCO">
+              <PropertyRef Name="SQESQUEMABANCO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKLOGERROSISTEMA">
+          <End Role="SISTEMA" Type="Self.SISTEMA" Multiplicity="1" />
+          <End Role="LOGERRO" Type="Self.LOGERRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SISTEMA">
+              <PropertyRef Name="SQSISTEMA" />
+            </Principal>
+            <Dependent Role="LOGERRO">
+              <PropertyRef Name="SQSISTEMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKLOGPRIVILEGIOUSUARIO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="LOGPRIVILEGIO" Type="Self.LOGPRIVILEGIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="SQUSUARIO" />
+            </Principal>
+            <Dependent Role="LOGPRIVILEGIO">
+              <PropertyRef Name="SQUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSISTEMAAMBIENTEAMBIENTE">
+          <End Role="AMBIENTE" Type="Self.AMBIENTE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SISTEMAAMBIENTE" Type="Self.SISTEMAAMBIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AMBIENTE">
+              <PropertyRef Name="SQAMBIENTE" />
+            </Principal>
+            <Dependent Role="SISTEMAAMBIENTE">
+              <PropertyRef Name="SQAMBIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSISTEMAAMBIENTESISTEMA">
+          <End Role="SISTEMA" Type="Self.SISTEMA" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SISTEMAAMBIENTE" Type="Self.SISTEMAAMBIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SISTEMA">
+              <PropertyRef Name="SQSISTEMA" />
+            </Principal>
+            <Dependent Role="SISTEMAAMBIENTE">
+              <PropertyRef Name="SQSISTEMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSISTEMADOMINIODOMINIO">
+          <End Role="DOMINIO" Type="Self.DOMINIO" Multiplicity="1" />
+          <End Role="SISTEMADOMINIO" Type="Self.SISTEMADOMINIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOMINIO">
+              <PropertyRef Name="SQDOMINIO" />
+            </Principal>
+            <Dependent Role="SISTEMADOMINIO">
+              <PropertyRef Name="SQDOMINIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSISTEMADOMINIOSISTEMA">
+          <End Role="SISTEMA" Type="Self.SISTEMA" Multiplicity="1" />
+          <End Role="SISTEMADOMINIO" Type="Self.SISTEMADOMINIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SISTEMA">
+              <PropertyRef Name="SQSISTEMA" />
+            </Principal>
+            <Dependent Role="SISTEMADOMINIO">
+              <PropertyRef Name="SQSISTEMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSISTEMAESQBANCOINSTESQBANCO">
+          <End Role="INSTANCIAESQUEMABANCO" Type="Self.INSTANCIAESQUEMABANCO" Multiplicity="1" />
+          <End Role="SISTEMAESQUEMABANCO" Type="Self.SISTEMAESQUEMABANCO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTANCIAESQUEMABANCO">
+              <PropertyRef Name="SQINSTANCIABANCO" />
+              <PropertyRef Name="SQESQUEMABANCO" />
+            </Principal>
+            <Dependent Role="SISTEMAESQUEMABANCO">
+              <PropertyRef Name="SQINSTANCIABANCO" />
+              <PropertyRef Name="SQESQUEMABANCO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSISTEMAESQBANCOSISTEMA">
+          <End Role="SISTEMA" Type="Self.SISTEMA" Multiplicity="1" />
+          <End Role="SISTEMAESQUEMABANCO" Type="Self.SISTEMAESQUEMABANCO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SISTEMA">
+              <PropertyRef Name="SQSISTEMA" />
+            </Principal>
+            <Dependent Role="SISTEMAESQUEMABANCO">
+              <PropertyRef Name="SQSISTEMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUSUARIOACESSOSISTEMA">
+          <End Role="SISTEMA" Type="Self.SISTEMA" Multiplicity="0..1" />
+          <End Role="USUARIOACESSO" Type="Self.USUARIOACESSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SISTEMA">
+              <PropertyRef Name="SQSISTEMA" />
+            </Principal>
+            <Dependent Role="USUARIOACESSO">
+              <PropertyRef Name="SQSISTEMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUSUARIOACESSOUSUARIO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="USUARIOACESSO" Type="Self.USUARIOACESSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="SQUSUARIO" />
+            </Principal>
+            <Dependent Role="USUARIOACESSO">
+              <PropertyRef Name="SQUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUSUARIOGRUPOGRUPO">
+          <End Role="GRUPO" Type="Self.GRUPO" Multiplicity="1" />
+          <End Role="USUARIOGRUPO" Type="Self.USUARIOGRUPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRUPO">
+              <PropertyRef Name="SQGRUPO" />
+            </Principal>
+            <Dependent Role="USUARIOGRUPO">
+              <PropertyRef Name="SQGRUPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUSUARIOGRUPOUSUARIO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="USUARIOGRUPO" Type="Self.USUARIOGRUPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="SQUSUARIO" />
+            </Principal>
+            <Dependent Role="USUARIOGRUPO">
+              <PropertyRef Name="SQUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="AMBIENTE" EntityType="Self.AMBIENTE" Schema="DBASAS" store:Type="Tables" />
+          <EntitySet Name="DOMINIO" EntityType="Self.DOMINIO" Schema="DBASAS" store:Type="Tables" />
+          <EntitySet Name="ESQUEMABANCO" EntityType="Self.ESQUEMABANCO" Schema="DBASAS" store:Type="Tables" />
+          <EntitySet Name="FUNCAO" EntityType="Self.FUNCAO" Schema="DBASAS" store:Type="Tables" />
+          <EntitySet Name="GRUPO" EntityType="Self.GRUPO" Schema="DBASAS" store:Type="Tables" />
+          <EntitySet Name="GRUPOFUNCAO" EntityType="Self.GRUPOFUNCAO" Schema="DBASAS" store:Type="Tables" />
+          <EntitySet Name="INSTANCIABANCO" EntityType="Self.INSTANCIABANCO" Schema="DBASAS" store:Type="Tables" />
+          <EntitySet Name="INSTANCIAESQUEMABANCO" EntityType="Self.INSTANCIAESQUEMABANCO" Schema="DBASAS" store:Type="Tables" />
+          <EntitySet Name="LOGERRO" EntityType="Self.LOGERRO" Schema="DBASAS" store:Type="Tables" />
+          <EntitySet Name="LOGPRIVILEGIO" EntityType="Self.LOGPRIVILEGIO" Schema="DBASAS" store:Type="Tables" />
+          <EntitySet Name="MENSAGEM" EntityType="Self.MENSAGEM" Schema="DBASAS" store:Type="Tables" />
+          <EntitySet Name="SISTEMA" EntityType="Self.SISTEMA" Schema="DBASAS" store:Type="Tables" />
+          <EntitySet Name="SISTEMAAMBIENTE" EntityType="Self.SISTEMAAMBIENTE" Schema="DBASAS" store:Type="Tables" />
+          <EntitySet Name="SISTEMADOMINIO" EntityType="Self.SISTEMADOMINIO" Schema="DBASAS" store:Type="Tables" />
+          <EntitySet Name="SISTEMAESQUEMABANCO" EntityType="Self.SISTEMAESQUEMABANCO" Schema="DBASAS" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="DBASAS" store:Type="Tables" />
+          <EntitySet Name="USUARIOACESSO" EntityType="Self.USUARIOACESSO" Schema="DBASAS" store:Type="Tables" />
+          <EntitySet Name="USUARIOGRUPO" EntityType="Self.USUARIOGRUPO" Schema="DBASAS" store:Type="Tables" />
+          <AssociationSet Name="FKFUNCAOSISTEMA" Association="Self.FKFUNCAOSISTEMA">
+            <End Role="SISTEMA" EntitySet="SISTEMA" />
+            <End Role="FUNCAO" EntitySet="FUNCAO" />
+          </AssociationSet>
+          <AssociationSet Name="FKGRUPOFUNCAOFUNCAO" Association="Self.FKGRUPOFUNCAOFUNCAO">
+            <End Role="FUNCAO" EntitySet="FUNCAO" />
+            <End Role="GRUPOFUNCAO" EntitySet="GRUPOFUNCAO" />
+          </AssociationSet>
+          <AssociationSet Name="FKGRUPOFUNCAOGRUPO" Association="Self.FKGRUPOFUNCAOGRUPO">
+            <End Role="GRUPO" EntitySet="GRUPO" />
+            <End Role="GRUPOFUNCAO" EntitySet="GRUPOFUNCAO" />
+          </AssociationSet>
+          <AssociationSet Name="FKGRUPOSISTEMA" Association="Self.FKGRUPOSISTEMA">
+            <End Role="SISTEMA" EntitySet="SISTEMA" />
+            <End Role="GRUPO" EntitySet="GRUPO" />
+          </AssociationSet>
+          <AssociationSet Name="FKINSTANCIABANCOAMBIENTE" Association="Self.FKINSTANCIABANCOAMBIENTE">
+            <End Role="AMBIENTE" EntitySet="AMBIENTE" />
+            <End Role="INSTANCIABANCO" EntitySet="INSTANCIABANCO" />
+          </AssociationSet>
+          <AssociationSet Name="FKINSTANCIAESQUBANCOINSTANCBAC" Association="Self.FKINSTANCIAESQUBANCOINSTANCBAC">
+            <End Role="INSTANCIABANCO" EntitySet="INSTANCIABANCO" />
+            <End Role="INSTANCIAESQUEMABANCO" EntitySet="INSTANCIAESQUEMABANCO" />
+          </AssociationSet>
+          <AssociationSet Name="FKINSTANCIAESQUBANESQUEMABANC" Association="Self.FKINSTANCIAESQUBANESQUEMABANC">
+            <End Role="ESQUEMABANCO" EntitySet="ESQUEMABANCO" />
+            <End Role="INSTANCIAESQUEMABANCO" EntitySet="INSTANCIAESQUEMABANCO" />
+          </AssociationSet>
+          <AssociationSet Name="FKLOGERROSISTEMA" Association="Self.FKLOGERROSISTEMA">
+            <End Role="SISTEMA" EntitySet="SISTEMA" />
+            <End Role="LOGERRO" EntitySet="LOGERRO" />
+          </AssociationSet>
+          <AssociationSet Name="FKLOGPRIVILEGIOUSUARIO" Association="Self.FKLOGPRIVILEGIOUSUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="LOGPRIVILEGIO" EntitySet="LOGPRIVILEGIO" />
+          </AssociationSet>
+          <AssociationSet Name="FKSISTEMAAMBIENTEAMBIENTE" Association="Self.FKSISTEMAAMBIENTEAMBIENTE">
+            <End Role="AMBIENTE" EntitySet="AMBIENTE" />
+            <End Role="SISTEMAAMBIENTE" EntitySet="SISTEMAAMBIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FKSISTEMAAMBIENTESISTEMA" Association="Self.FKSISTEMAAMBIENTESISTEMA">
+            <End Role="SISTEMA" EntitySet="SISTEMA" />
+            <End Role="SISTEMAAMBIENTE" EntitySet="SISTEMAAMBIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FKSISTEMADOMINIODOMINIO" Association="Self.FKSISTEMADOMINIODOMINIO">
+            <End Role="DOMINIO" EntitySet="DOMINIO" />
+            <End Role="SISTEMADOMINIO" EntitySet="SISTEMADOMINIO" />
+          </AssociationSet>
+          <AssociationSet Name="FKSISTEMADOMINIOSISTEMA" Association="Self.FKSISTEMADOMINIOSISTEMA">
+            <End Role="SISTEMA" EntitySet="SISTEMA" />
+            <End Role="SISTEMADOMINIO" EntitySet="SISTEMADOMINIO" />
+          </AssociationSet>
+          <AssociationSet Name="FKSISTEMAESQBANCOINSTESQBANCO" Association="Self.FKSISTEMAESQBANCOINSTESQBANCO">
+            <End Role="INSTANCIAESQUEMABANCO" EntitySet="INSTANCIAESQUEMABANCO" />
+            <End Role="SISTEMAESQUEMABANCO" EntitySet="SISTEMAESQUEMABANCO" />
+          </AssociationSet>
+          <AssociationSet Name="FKSISTEMAESQBANCOSISTEMA" Association="Self.FKSISTEMAESQBANCOSISTEMA">
+            <End Role="SISTEMA" EntitySet="SISTEMA" />
+            <End Role="SISTEMAESQUEMABANCO" EntitySet="SISTEMAESQUEMABANCO" />
+          </AssociationSet>
+          <AssociationSet Name="FKUSUARIOACESSOSISTEMA" Association="Self.FKUSUARIOACESSOSISTEMA">
+            <End Role="SISTEMA" EntitySet="SISTEMA" />
+            <End Role="USUARIOACESSO" EntitySet="USUARIOACESSO" />
+          </AssociationSet>
+          <AssociationSet Name="FKUSUARIOACESSOUSUARIO" Association="Self.FKUSUARIOACESSOUSUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIOACESSO" EntitySet="USUARIOACESSO" />
+          </AssociationSet>
+          <AssociationSet Name="FKUSUARIOGRUPOGRUPO" Association="Self.FKUSUARIOGRUPOGRUPO">
+            <End Role="GRUPO" EntitySet="GRUPO" />
+            <End Role="USUARIOGRUPO" EntitySet="USUARIOGRUPO" />
+          </AssociationSet>
+          <AssociationSet Name="FKUSUARIOGRUPOUSUARIO" Association="Self.FKUSUARIOGRUPOUSUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIOGRUPO" EntitySet="USUARIOGRUPO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AMBIENTE">
+          <Key>
+            <PropertyRef Name="SQAMBIENTE" />
+          </Key>
+          <Property Name="SQAMBIENTE" Type="Byte" Nullable="false" />
+          <Property Name="CDAMBIENTE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DSAMBIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="INSTANCIABANCO" Relationship="Self.FKINSTANCIABANCOAMBIENTE" FromRole="AMBIENTE" ToRole="INSTANCIABANCO" />
+          <NavigationProperty Name="SISTEMAAMBIENTE" Relationship="Self.FKSISTEMAAMBIENTEAMBIENTE" FromRole="AMBIENTE" ToRole="SISTEMAAMBIENTE" />
+        </EntityType>
+        <EntityType Name="DOMINIO">
+          <Key>
+            <PropertyRef Name="SQDOMINIO" />
+          </Key>
+          <Property Name="SQDOMINIO" Type="Byte" Nullable="false" />
+          <Property Name="CDDOMINIO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NMDOMINIO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NUDIASEXPIRACAOSENHA" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="SISTEMA" Relationship="Self.SISTEMADOMINIO" FromRole="DOMINIO" ToRole="SISTEMA" />
+        </EntityType>
+        <EntityType Name="ESQUEMABANCO">
+          <Key>
+            <PropertyRef Name="SQESQUEMABANCO" />
+          </Key>
+          <Property Name="SQESQUEMABANCO" Type="Int16" Nullable="false" />
+          <Property Name="CDESQUEMABANCO" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DSESQUEMABANCO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="INSTANCIAESQUEMABANCO" Relationship="Self.FKINSTANCIAESQUBANESQUEMABANC" FromRole="ESQUEMABANCO" ToRole="INSTANCIAESQUEMABANCO" />
+        </EntityType>
+        <EntityType Name="FUNCAO">
+          <Key>
+            <PropertyRef Name="SQFUNCAO" />
+          </Key>
+          <Property Name="SQFUNCAO" Type="Int16" Nullable="false" />
+          <Property Name="SQSISTEMA" Type="Int16" Nullable="false" />
+          <Property Name="CDFUNCAO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NMFUNCAO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SISTEMA" Relationship="Self.FKFUNCAOSISTEMA" FromRole="FUNCAO" ToRole="SISTEMA" />
+          <NavigationProperty Name="GRUPO" Relationship="Self.GRUPOFUNCAO" FromRole="FUNCAO" ToRole="GRUPO" />
+        </EntityType>
+        <EntityType Name="GRUPO">
+          <Key>
+            <PropertyRef Name="SQGRUPO" />
+          </Key>
+          <Property Name="SQGRUPO" Type="Int16" Nullable="false" />
+          <Property Name="SQSISTEMA" Type="Int16" Nullable="false" />
+          <Property Name="CDGRUPO" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DSGRUPO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FLADMINISTRATIVO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DSSENHABANCODADOS" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SISTEMA" Relationship="Self.FKGRUPOSISTEMA" FromRole="GRUPO" ToRole="SISTEMA" />
+          <NavigationProperty Name="FUNCAO" Relationship="Self.GRUPOFUNCAO" FromRole="GRUPO" ToRole="FUNCAO" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.USUARIOGRUPO" FromRole="GRUPO" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="INSTANCIABANCO">
+          <Key>
+            <PropertyRef Name="SQINSTANCIABANCO" />
+          </Key>
+          <Property Name="SQINSTANCIABANCO" Type="Int16" Nullable="false" />
+          <Property Name="CDINSTANCIABANCO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DSINSTANCIABANCO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SQAMBIENTE" Type="Byte" />
+          <Property Name="HOST" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PORT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SERVICENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AMBIENTE" Relationship="Self.FKINSTANCIABANCOAMBIENTE" FromRole="INSTANCIABANCO" ToRole="AMBIENTE" />
+          <NavigationProperty Name="INSTANCIAESQUEMABANCO" Relationship="Self.FKINSTANCIAESQUBANCOINSTANCBAC" FromRole="INSTANCIABANCO" ToRole="INSTANCIAESQUEMABANCO" />
+        </EntityType>
+        <EntityType Name="INSTANCIAESQUEMABANCO">
+          <Key>
+            <PropertyRef Name="SQESQUEMABANCO" />
+            <PropertyRef Name="SQINSTANCIABANCO" />
+          </Key>
+          <Property Name="SQESQUEMABANCO" Type="Int16" Nullable="false" />
+          <Property Name="SQINSTANCIABANCO" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="ESQUEMABANCO" Relationship="Self.FKINSTANCIAESQUBANESQUEMABANC" FromRole="INSTANCIAESQUEMABANCO" ToRole="ESQUEMABANCO" />
+          <NavigationProperty Name="INSTANCIABANCO" Relationship="Self.FKINSTANCIAESQUBANCOINSTANCBAC" FromRole="INSTANCIAESQUEMABANCO" ToRole="INSTANCIABANCO" />
+          <NavigationProperty Name="SISTEMA" Relationship="Self.SISTEMAESQUEMABANCO" FromRole="INSTANCIAESQUEMABANCO" ToRole="SISTEMA" />
+        </EntityType>
+        <EntityType Name="LOGERRO">
+          <Key>
+            <PropertyRef Name="SQLOGERRO" />
+          </Key>
+          <Property Name="SQLOGERRO" Type="Int32" Nullable="false" />
+          <Property Name="SQSISTEMA" Type="Int16" Nullable="false" />
+          <Property Name="DSERRO" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DTERRO" Type="DateTime" Nullable="false" />
+          <Property Name="NUERRO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DSORIGEM" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="DSLOGIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DCSTACKTRACE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SISTEMA" Relationship="Self.FKLOGERROSISTEMA" FromRole="LOGERRO" ToRole="SISTEMA" />
+        </EntityType>
+        <EntityType Name="LOGPRIVILEGIO">
+          <Key>
+            <PropertyRef Name="SQLOGPRIVILEGIO" />
+          </Key>
+          <Property Name="SQLOGPRIVILEGIO" Type="Int32" Nullable="false" />
+          <Property Name="DTLOGPRIVILEGIO" Type="DateTime" Nullable="false" />
+          <Property Name="TPACAO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TPPRIVILEGIO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NMOBJETO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NMUSUARIO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SQUSUARIO" Type="Int16" Nullable="false" />
+          <Property Name="DSCOMANDO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FKLOGPRIVILEGIOUSUARIO" FromRole="LOGPRIVILEGIO" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="MENSAGEM">
+          <Key>
+            <PropertyRef Name="SQMENSAGEM" />
+          </Key>
+          <Property Name="SQMENSAGEM" Type="Int16" Nullable="false" />
+          <Property Name="CDMENSAGEM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DSMENSAGEM" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SISTEMA">
+          <Key>
+            <PropertyRef Name="SQSISTEMA" />
+          </Key>
+          <Property Name="SQSISTEMA" Type="Int16" Nullable="false" />
+          <Property Name="CDSISTEMA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NMSISTEMA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="FUNCAO" Relationship="Self.FKFUNCAOSISTEMA" FromRole="SISTEMA" ToRole="FUNCAO" />
+          <NavigationProperty Name="GRUPO" Relationship="Self.FKGRUPOSISTEMA" FromRole="SISTEMA" ToRole="GRUPO" />
+          <NavigationProperty Name="LOGERRO" Relationship="Self.FKLOGERROSISTEMA" FromRole="SISTEMA" ToRole="LOGERRO" />
+          <NavigationProperty Name="SISTEMAAMBIENTE" Relationship="Self.FKSISTEMAAMBIENTESISTEMA" FromRole="SISTEMA" ToRole="SISTEMAAMBIENTE" />
+          <NavigationProperty Name="USUARIOACESSO" Relationship="Self.FKUSUARIOACESSOSISTEMA" FromRole="SISTEMA" ToRole="USUARIOACESSO" />
+          <NavigationProperty Name="DOMINIO" Relationship="Self.SISTEMADOMINIO" FromRole="SISTEMA" ToRole="DOMINIO" />
+          <NavigationProperty Name="INSTANCIAESQUEMABANCO" Relationship="Self.SISTEMAESQUEMABANCO" FromRole="SISTEMA" ToRole="INSTANCIAESQUEMABANCO" />
+        </EntityType>
+        <EntityType Name="SISTEMAAMBIENTE">
+          <Key>
+            <PropertyRef Name="SQAMBIENTE" />
+            <PropertyRef Name="SQSISTEMA" />
+          </Key>
+          <Property Name="SQAMBIENTE" Type="Byte" Nullable="false" />
+          <Property Name="SQSISTEMA" Type="Int16" Nullable="false" />
+          <Property Name="DSURLSISTEMA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AMBIENTE" Relationship="Self.FKSISTEMAAMBIENTEAMBIENTE" FromRole="SISTEMAAMBIENTE" ToRole="AMBIENTE" />
+          <NavigationProperty Name="SISTEMA" Relationship="Self.FKSISTEMAAMBIENTESISTEMA" FromRole="SISTEMAAMBIENTE" ToRole="SISTEMA" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="SQUSUARIO" />
+          </Key>
+          <Property Name="SQUSUARIO" Type="Int16" Nullable="false" />
+          <Property Name="CDMATRICULA" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NMUSUARIO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DSLOGIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DSHASHSENHA" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DTEXPIRACAOSENHA" Type="DateTime" />
+          <Property Name="FLATIVO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LOGPRIVILEGIO" Relationship="Self.FKLOGPRIVILEGIOUSUARIO" FromRole="USUARIO" ToRole="LOGPRIVILEGIO" />
+          <NavigationProperty Name="USUARIOACESSO" Relationship="Self.FKUSUARIOACESSOUSUARIO" FromRole="USUARIO" ToRole="USUARIOACESSO" />
+          <NavigationProperty Name="GRUPO" Relationship="Self.USUARIOGRUPO" FromRole="USUARIO" ToRole="GRUPO" />
+        </EntityType>
+        <EntityType Name="USUARIOACESSO">
+          <Key>
+            <PropertyRef Name="SQUSUARIOACESSO" />
+          </Key>
+          <Property Name="SQUSUARIOACESSO" Type="Int32" Nullable="false" />
+          <Property Name="DTACESSOSISTEMA" Type="DateTime" Nullable="false" />
+          <Property Name="FLUSUARIOLOGADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SQUSUARIO" Type="Int16" />
+          <Property Name="SQSISTEMA" Type="Int16" />
+          <Property Name="DSLOGINREDE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DSMAQUINA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SISTEMA" Relationship="Self.FKUSUARIOACESSOSISTEMA" FromRole="USUARIOACESSO" ToRole="SISTEMA" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FKUSUARIOACESSOUSUARIO" FromRole="USUARIOACESSO" ToRole="USUARIO" />
+        </EntityType>
+        <Association Name="FKINSTANCIABANCOAMBIENTE">
+          <End Role="AMBIENTE" Type="Self.AMBIENTE" Multiplicity="0..1" />
+          <End Role="INSTANCIABANCO" Type="Self.INSTANCIABANCO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AMBIENTE">
+              <PropertyRef Name="SQAMBIENTE" />
+            </Principal>
+            <Dependent Role="INSTANCIABANCO">
+              <PropertyRef Name="SQAMBIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSISTEMAAMBIENTEAMBIENTE">
+          <End Role="AMBIENTE" Type="Self.AMBIENTE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SISTEMAAMBIENTE" Type="Self.SISTEMAAMBIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AMBIENTE">
+              <PropertyRef Name="SQAMBIENTE" />
+            </Principal>
+            <Dependent Role="SISTEMAAMBIENTE">
+              <PropertyRef Name="SQAMBIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKINSTANCIAESQUBANESQUEMABANC">
+          <End Role="ESQUEMABANCO" Type="Self.ESQUEMABANCO" Multiplicity="1" />
+          <End Role="INSTANCIAESQUEMABANCO" Type="Self.INSTANCIAESQUEMABANCO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESQUEMABANCO">
+              <PropertyRef Name="SQESQUEMABANCO" />
+            </Principal>
+            <Dependent Role="INSTANCIAESQUEMABANCO">
+              <PropertyRef Name="SQESQUEMABANCO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKFUNCAOSISTEMA">
+          <End Role="SISTEMA" Type="Self.SISTEMA" Multiplicity="1" />
+          <End Role="FUNCAO" Type="Self.FUNCAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SISTEMA">
+              <PropertyRef Name="SQSISTEMA" />
+            </Principal>
+            <Dependent Role="FUNCAO">
+              <PropertyRef Name="SQSISTEMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKGRUPOSISTEMA">
+          <End Role="SISTEMA" Type="Self.SISTEMA" Multiplicity="1" />
+          <End Role="GRUPO" Type="Self.GRUPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SISTEMA">
+              <PropertyRef Name="SQSISTEMA" />
+            </Principal>
+            <Dependent Role="GRUPO">
+              <PropertyRef Name="SQSISTEMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKINSTANCIAESQUBANCOINSTANCBAC">
+          <End Role="INSTANCIABANCO" Type="Self.INSTANCIABANCO" Multiplicity="1" />
+          <End Role="INSTANCIAESQUEMABANCO" Type="Self.INSTANCIAESQUEMABANCO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTANCIABANCO">
+              <PropertyRef Name="SQINSTANCIABANCO" />
+            </Principal>
+            <Dependent Role="INSTANCIAESQUEMABANCO">
+              <PropertyRef Name="SQINSTANCIABANCO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKLOGERROSISTEMA">
+          <End Role="SISTEMA" Type="Self.SISTEMA" Multiplicity="1" />
+          <End Role="LOGERRO" Type="Self.LOGERRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SISTEMA">
+              <PropertyRef Name="SQSISTEMA" />
+            </Principal>
+            <Dependent Role="LOGERRO">
+              <PropertyRef Name="SQSISTEMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKLOGPRIVILEGIOUSUARIO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="LOGPRIVILEGIO" Type="Self.LOGPRIVILEGIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="SQUSUARIO" />
+            </Principal>
+            <Dependent Role="LOGPRIVILEGIO">
+              <PropertyRef Name="SQUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSISTEMAAMBIENTESISTEMA">
+          <End Role="SISTEMA" Type="Self.SISTEMA" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SISTEMAAMBIENTE" Type="Self.SISTEMAAMBIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SISTEMA">
+              <PropertyRef Name="SQSISTEMA" />
+            </Principal>
+            <Dependent Role="SISTEMAAMBIENTE">
+              <PropertyRef Name="SQSISTEMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUSUARIOACESSOSISTEMA">
+          <End Role="SISTEMA" Type="Self.SISTEMA" Multiplicity="0..1" />
+          <End Role="USUARIOACESSO" Type="Self.USUARIOACESSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SISTEMA">
+              <PropertyRef Name="SQSISTEMA" />
+            </Principal>
+            <Dependent Role="USUARIOACESSO">
+              <PropertyRef Name="SQSISTEMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUSUARIOACESSOUSUARIO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="USUARIOACESSO" Type="Self.USUARIOACESSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="SQUSUARIO" />
+            </Principal>
+            <Dependent Role="USUARIOACESSO">
+              <PropertyRef Name="SQUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GRUPOFUNCAO">
+          <End Role="FUNCAO" Type="Self.FUNCAO" Multiplicity="*" />
+          <End Role="GRUPO" Type="Self.GRUPO" Multiplicity="*" />
+        </Association>
+        <Association Name="SISTEMADOMINIO">
+          <End Role="DOMINIO" Type="Self.DOMINIO" Multiplicity="*" />
+          <End Role="SISTEMA" Type="Self.SISTEMA" Multiplicity="*" />
+        </Association>
+        <Association Name="SISTEMAESQUEMABANCO">
+          <End Role="INSTANCIAESQUEMABANCO" Type="Self.INSTANCIAESQUEMABANCO" Multiplicity="*" />
+          <End Role="SISTEMA" Type="Self.SISTEMA" Multiplicity="*" />
+        </Association>
+        <Association Name="USUARIOGRUPO">
+          <End Role="GRUPO" Type="Self.GRUPO" Multiplicity="*" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AMBIENTE" EntityType="Self.AMBIENTE" />
+          <EntitySet Name="DOMINIO" EntityType="Self.DOMINIO" />
+          <EntitySet Name="ESQUEMABANCO" EntityType="Self.ESQUEMABANCO" />
+          <EntitySet Name="FUNCAO" EntityType="Self.FUNCAO" />
+          <EntitySet Name="GRUPO" EntityType="Self.GRUPO" />
+          <EntitySet Name="INSTANCIABANCO" EntityType="Self.INSTANCIABANCO" />
+          <EntitySet Name="INSTANCIAESQUEMABANCO" EntityType="Self.INSTANCIAESQUEMABANCO" />
+          <EntitySet Name="LOGERRO" EntityType="Self.LOGERRO" />
+          <EntitySet Name="LOGPRIVILEGIO" EntityType="Self.LOGPRIVILEGIO" />
+          <EntitySet Name="MENSAGEM" EntityType="Self.MENSAGEM" />
+          <EntitySet Name="SISTEMA" EntityType="Self.SISTEMA" />
+          <EntitySet Name="SISTEMAAMBIENTE" EntityType="Self.SISTEMAAMBIENTE" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+          <EntitySet Name="USUARIOACESSO" EntityType="Self.USUARIOACESSO" />
+          <AssociationSet Name="FKINSTANCIABANCOAMBIENTE" Association="Self.FKINSTANCIABANCOAMBIENTE">
+            <End Role="AMBIENTE" EntitySet="AMBIENTE" />
+            <End Role="INSTANCIABANCO" EntitySet="INSTANCIABANCO" />
+          </AssociationSet>
+          <AssociationSet Name="FKSISTEMAAMBIENTEAMBIENTE" Association="Self.FKSISTEMAAMBIENTEAMBIENTE">
+            <End Role="AMBIENTE" EntitySet="AMBIENTE" />
+            <End Role="SISTEMAAMBIENTE" EntitySet="SISTEMAAMBIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FKINSTANCIAESQUBANESQUEMABANC" Association="Self.FKINSTANCIAESQUBANESQUEMABANC">
+            <End Role="ESQUEMABANCO" EntitySet="ESQUEMABANCO" />
+            <End Role="INSTANCIAESQUEMABANCO" EntitySet="INSTANCIAESQUEMABANCO" />
+          </AssociationSet>
+          <AssociationSet Name="FKFUNCAOSISTEMA" Association="Self.FKFUNCAOSISTEMA">
+            <End Role="SISTEMA" EntitySet="SISTEMA" />
+            <End Role="FUNCAO" EntitySet="FUNCAO" />
+          </AssociationSet>
+          <AssociationSet Name="FKGRUPOSISTEMA" Association="Self.FKGRUPOSISTEMA">
+            <End Role="SISTEMA" EntitySet="SISTEMA" />
+            <End Role="GRUPO" EntitySet="GRUPO" />
+          </AssociationSet>
+          <AssociationSet Name="FKINSTANCIAESQUBANCOINSTANCBAC" Association="Self.FKINSTANCIAESQUBANCOINSTANCBAC">
+            <End Role="INSTANCIABANCO" EntitySet="INSTANCIABANCO" />
+            <End Role="INSTANCIAESQUEMABANCO" EntitySet="INSTANCIAESQUEMABANCO" />
+          </AssociationSet>
+          <AssociationSet Name="FKLOGERROSISTEMA" Association="Self.FKLOGERROSISTEMA">
+            <End Role="SISTEMA" EntitySet="SISTEMA" />
+            <End Role="LOGERRO" EntitySet="LOGERRO" />
+          </AssociationSet>
+          <AssociationSet Name="FKLOGPRIVILEGIOUSUARIO" Association="Self.FKLOGPRIVILEGIOUSUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="LOGPRIVILEGIO" EntitySet="LOGPRIVILEGIO" />
+          </AssociationSet>
+          <AssociationSet Name="FKSISTEMAAMBIENTESISTEMA" Association="Self.FKSISTEMAAMBIENTESISTEMA">
+            <End Role="SISTEMA" EntitySet="SISTEMA" />
+            <End Role="SISTEMAAMBIENTE" EntitySet="SISTEMAAMBIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FKUSUARIOACESSOSISTEMA" Association="Self.FKUSUARIOACESSOSISTEMA">
+            <End Role="SISTEMA" EntitySet="SISTEMA" />
+            <End Role="USUARIOACESSO" EntitySet="USUARIOACESSO" />
+          </AssociationSet>
+          <AssociationSet Name="FKUSUARIOACESSOUSUARIO" Association="Self.FKUSUARIOACESSOUSUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIOACESSO" EntitySet="USUARIOACESSO" />
+          </AssociationSet>
+          <AssociationSet Name="GRUPOFUNCAO" Association="Self.GRUPOFUNCAO">
+            <End Role="FUNCAO" EntitySet="FUNCAO" />
+            <End Role="GRUPO" EntitySet="GRUPO" />
+          </AssociationSet>
+          <AssociationSet Name="SISTEMADOMINIO" Association="Self.SISTEMADOMINIO">
+            <End Role="DOMINIO" EntitySet="DOMINIO" />
+            <End Role="SISTEMA" EntitySet="SISTEMA" />
+          </AssociationSet>
+          <AssociationSet Name="SISTEMAESQUEMABANCO" Association="Self.SISTEMAESQUEMABANCO">
+            <End Role="INSTANCIAESQUEMABANCO" EntitySet="INSTANCIAESQUEMABANCO" />
+            <End Role="SISTEMA" EntitySet="SISTEMA" />
+          </AssociationSet>
+          <AssociationSet Name="USUARIOGRUPO" Association="Self.USUARIOGRUPO">
+            <End Role="GRUPO" EntitySet="GRUPO" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="AMBIENTE">
+            <EntityTypeMapping TypeName="Model.AMBIENTE">
+              <MappingFragment StoreEntitySet="AMBIENTE">
+                <ScalarProperty Name="SQAMBIENTE" ColumnName="SQAMBIENTE" />
+                <ScalarProperty Name="CDAMBIENTE" ColumnName="CDAMBIENTE" />
+                <ScalarProperty Name="DSAMBIENTE" ColumnName="DSAMBIENTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOMINIO">
+            <EntityTypeMapping TypeName="Model.DOMINIO">
+              <MappingFragment StoreEntitySet="DOMINIO">
+                <ScalarProperty Name="SQDOMINIO" ColumnName="SQDOMINIO" />
+                <ScalarProperty Name="CDDOMINIO" ColumnName="CDDOMINIO" />
+                <ScalarProperty Name="NMDOMINIO" ColumnName="NMDOMINIO" />
+                <ScalarProperty Name="NUDIASEXPIRACAOSENHA" ColumnName="NUDIASEXPIRACAOSENHA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESQUEMABANCO">
+            <EntityTypeMapping TypeName="Model.ESQUEMABANCO">
+              <MappingFragment StoreEntitySet="ESQUEMABANCO">
+                <ScalarProperty Name="SQESQUEMABANCO" ColumnName="SQESQUEMABANCO" />
+                <ScalarProperty Name="CDESQUEMABANCO" ColumnName="CDESQUEMABANCO" />
+                <ScalarProperty Name="DSESQUEMABANCO" ColumnName="DSESQUEMABANCO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FUNCAO">
+            <EntityTypeMapping TypeName="Model.FUNCAO">
+              <MappingFragment StoreEntitySet="FUNCAO">
+                <ScalarProperty Name="SQFUNCAO" ColumnName="SQFUNCAO" />
+                <ScalarProperty Name="SQSISTEMA" ColumnName="SQSISTEMA" />
+                <ScalarProperty Name="CDFUNCAO" ColumnName="CDFUNCAO" />
+                <ScalarProperty Name="NMFUNCAO" ColumnName="NMFUNCAO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRUPO">
+            <EntityTypeMapping TypeName="Model.GRUPO">
+              <MappingFragment StoreEntitySet="GRUPO">
+                <ScalarProperty Name="SQGRUPO" ColumnName="SQGRUPO" />
+                <ScalarProperty Name="SQSISTEMA" ColumnName="SQSISTEMA" />
+                <ScalarProperty Name="CDGRUPO" ColumnName="CDGRUPO" />
+                <ScalarProperty Name="DSGRUPO" ColumnName="DSGRUPO" />
+                <ScalarProperty Name="FLADMINISTRATIVO" ColumnName="FLADMINISTRATIVO" />
+                <ScalarProperty Name="DSSENHABANCODADOS" ColumnName="DSSENHABANCODADOS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INSTANCIABANCO">
+            <EntityTypeMapping TypeName="Model.INSTANCIABANCO">
+              <MappingFragment StoreEntitySet="INSTANCIABANCO">
+                <ScalarProperty Name="SQINSTANCIABANCO" ColumnName="SQINSTANCIABANCO" />
+                <ScalarProperty Name="CDINSTANCIABANCO" ColumnName="CDINSTANCIABANCO" />
+                <ScalarProperty Name="DSINSTANCIABANCO" ColumnName="DSINSTANCIABANCO" />
+                <ScalarProperty Name="SQAMBIENTE" ColumnName="SQAMBIENTE" />
+                <ScalarProperty Name="HOST" ColumnName="HOST" />
+                <ScalarProperty Name="PORT" ColumnName="PORT" />
+                <ScalarProperty Name="SERVICENAME" ColumnName="SERVICENAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INSTANCIAESQUEMABANCO">
+            <EntityTypeMapping TypeName="Model.INSTANCIAESQUEMABANCO">
+              <MappingFragment StoreEntitySet="INSTANCIAESQUEMABANCO">
+                <ScalarProperty Name="SQESQUEMABANCO" ColumnName="SQESQUEMABANCO" />
+                <ScalarProperty Name="SQINSTANCIABANCO" ColumnName="SQINSTANCIABANCO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOGERRO">
+            <EntityTypeMapping TypeName="Model.LOGERRO">
+              <MappingFragment StoreEntitySet="LOGERRO">
+                <ScalarProperty Name="SQLOGERRO" ColumnName="SQLOGERRO" />
+                <ScalarProperty Name="SQSISTEMA" ColumnName="SQSISTEMA" />
+                <ScalarProperty Name="DSERRO" ColumnName="DSERRO" />
+                <ScalarProperty Name="DTERRO" ColumnName="DTERRO" />
+                <ScalarProperty Name="NUERRO" ColumnName="NUERRO" />
+                <ScalarProperty Name="DSORIGEM" ColumnName="DSORIGEM" />
+                <ScalarProperty Name="DSLOGIN" ColumnName="DSLOGIN" />
+                <ScalarProperty Name="DCSTACKTRACE" ColumnName="DCSTACKTRACE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOGPRIVILEGIO">
+            <EntityTypeMapping TypeName="Model.LOGPRIVILEGIO">
+              <MappingFragment StoreEntitySet="LOGPRIVILEGIO">
+                <ScalarProperty Name="SQLOGPRIVILEGIO" ColumnName="SQLOGPRIVILEGIO" />
+                <ScalarProperty Name="DTLOGPRIVILEGIO" ColumnName="DTLOGPRIVILEGIO" />
+                <ScalarProperty Name="TPACAO" ColumnName="TPACAO" />
+                <ScalarProperty Name="TPPRIVILEGIO" ColumnName="TPPRIVILEGIO" />
+                <ScalarProperty Name="NMOBJETO" ColumnName="NMOBJETO" />
+                <ScalarProperty Name="NMUSUARIO" ColumnName="NMUSUARIO" />
+                <ScalarProperty Name="SQUSUARIO" ColumnName="SQUSUARIO" />
+                <ScalarProperty Name="DSCOMANDO" ColumnName="DSCOMANDO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MENSAGEM">
+            <EntityTypeMapping TypeName="Model.MENSAGEM">
+              <MappingFragment StoreEntitySet="MENSAGEM">
+                <ScalarProperty Name="SQMENSAGEM" ColumnName="SQMENSAGEM" />
+                <ScalarProperty Name="CDMENSAGEM" ColumnName="CDMENSAGEM" />
+                <ScalarProperty Name="DSMENSAGEM" ColumnName="DSMENSAGEM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SISTEMA">
+            <EntityTypeMapping TypeName="Model.SISTEMA">
+              <MappingFragment StoreEntitySet="SISTEMA">
+                <ScalarProperty Name="SQSISTEMA" ColumnName="SQSISTEMA" />
+                <ScalarProperty Name="CDSISTEMA" ColumnName="CDSISTEMA" />
+                <ScalarProperty Name="NMSISTEMA" ColumnName="NMSISTEMA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SISTEMAAMBIENTE">
+            <EntityTypeMapping TypeName="Model.SISTEMAAMBIENTE">
+              <MappingFragment StoreEntitySet="SISTEMAAMBIENTE">
+                <ScalarProperty Name="SQAMBIENTE" ColumnName="SQAMBIENTE" />
+                <ScalarProperty Name="SQSISTEMA" ColumnName="SQSISTEMA" />
+                <ScalarProperty Name="DSURLSISTEMA" ColumnName="DSURLSISTEMA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="Model.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="SQUSUARIO" ColumnName="SQUSUARIO" />
+                <ScalarProperty Name="CDMATRICULA" ColumnName="CDMATRICULA" />
+                <ScalarProperty Name="NMUSUARIO" ColumnName="NMUSUARIO" />
+                <ScalarProperty Name="DSLOGIN" ColumnName="DSLOGIN" />
+                <ScalarProperty Name="DSHASHSENHA" ColumnName="DSHASHSENHA" />
+                <ScalarProperty Name="DTEXPIRACAOSENHA" ColumnName="DTEXPIRACAOSENHA" />
+                <ScalarProperty Name="FLATIVO" ColumnName="FLATIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOACESSO">
+            <EntityTypeMapping TypeName="Model.USUARIOACESSO">
+              <MappingFragment StoreEntitySet="USUARIOACESSO">
+                <ScalarProperty Name="SQUSUARIOACESSO" ColumnName="SQUSUARIOACESSO" />
+                <ScalarProperty Name="DTACESSOSISTEMA" ColumnName="DTACESSOSISTEMA" />
+                <ScalarProperty Name="FLUSUARIOLOGADO" ColumnName="FLUSUARIOLOGADO" />
+                <ScalarProperty Name="SQUSUARIO" ColumnName="SQUSUARIO" />
+                <ScalarProperty Name="SQSISTEMA" ColumnName="SQSISTEMA" />
+                <ScalarProperty Name="DSLOGINREDE" ColumnName="DSLOGINREDE" />
+                <ScalarProperty Name="DSMAQUINA" ColumnName="DSMAQUINA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="GRUPOFUNCAO" TypeName="Model.GRUPOFUNCAO" StoreEntitySet="GRUPOFUNCAO">
+            <EndProperty Name="FUNCAO">
+              <ScalarProperty Name="SQFUNCAO" ColumnName="SQFUNCAO" />
+            </EndProperty>
+            <EndProperty Name="GRUPO">
+              <ScalarProperty Name="SQGRUPO" ColumnName="SQGRUPO" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="SISTEMADOMINIO" TypeName="Model.SISTEMADOMINIO" StoreEntitySet="SISTEMADOMINIO">
+            <EndProperty Name="DOMINIO">
+              <ScalarProperty Name="SQDOMINIO" ColumnName="SQDOMINIO" />
+            </EndProperty>
+            <EndProperty Name="SISTEMA">
+              <ScalarProperty Name="SQSISTEMA" ColumnName="SQSISTEMA" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="SISTEMAESQUEMABANCO" TypeName="Model.SISTEMAESQUEMABANCO" StoreEntitySet="SISTEMAESQUEMABANCO">
+            <EndProperty Name="INSTANCIAESQUEMABANCO">
+              <ScalarProperty Name="SQESQUEMABANCO" ColumnName="SQESQUEMABANCO" />
+              <ScalarProperty Name="SQINSTANCIABANCO" ColumnName="SQINSTANCIABANCO" />
+            </EndProperty>
+            <EndProperty Name="SISTEMA">
+              <ScalarProperty Name="SQSISTEMA" ColumnName="SQSISTEMA" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="USUARIOGRUPO" TypeName="Model.USUARIOGRUPO" StoreEntitySet="USUARIOGRUPO">
+            <EndProperty Name="GRUPO">
+              <ScalarProperty Name="SQGRUPO" ColumnName="SQGRUPO" />
+            </EndProperty>
+            <EndProperty Name="USUARIO">
+              <ScalarProperty Name="SQUSUARIO" ColumnName="SQUSUARIO" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
